@@ -82,7 +82,11 @@ Datenmodelle _
 
 #### Rasterdaten
 
-![[Libre Texts Geosciences. 4.1: Raster Data Models, Fig. 4.1](https://geo.libretexts.org/Bookshelves/Geography_(Physical)/Essentials_of_Geographic_Information_Systems_(Campbell_and_Shin)/04%3A_Data_Models_for_GIS/4.01%3A_Raster_Data_Models) ](https://geo.libretexts.org/@api/deki/files/7407/4f157f6b392921b128e220ee56d2eb72.jpg?revision=1&size=bestfit&width=425&height=278)
+![[Libre Texts Geosciences. 4.1: Raster Data Models, Fig. 4.1](https://geo.libretexts.org/Bookshelves/Geography_(Physical)/Essentials_of_Geographic_Information_Systems_(Campbell_and_Shin)/04%3A_Data_Models_for_GIS/4.01%3A_Raster_Data_Models) ](https://geo.libretexts.org/@api/deki/files/7407/4f157f6b392921b128e220ee56d2eb72.jpg?revision=1&size=bestfit&width=325&height=178)
+
+----
+
+<img data-src="myImage.png" height="420" width="200" /><img data-src="myImage.png" height="420" width="200" />
 
 ----
 
