@@ -2,78 +2,202 @@
 
 |  |  |
 |:---|---|
-| date | 25-01-2022 |
+| date | 28-10-2023 |
 | author | Anne Klammt |
 | license | cc by-s.a 4.0 |
 
 ---
 
-## Kurze Vorstellungsrunde
+## https://hait-tudd.github.io/vorlesung_geodaten_20231106
 
 ---
 
-## Inhalte
 
-| Abschnitt |  Thema |
+|  |  Thema |
 |---|---|
-| vormittag | vom Objekt zu den Daten |
-| | Daten über Daten als Mehrwert |
-| nachmittags | Datensammlungen vernetzen |
-|  | Daten noch besser nutzbar machen |
+| 1 | HAIT und Beispiele raumbezogener Forschung |
+| 2 | Datenmodelle und -formate |
+| 3 | historische Orte vs. historische Karten |
+| 4 | Gazetteer und Standards |
+| 5 | Take aways |
 
 ----
 
-### Modulbeschreibung
+### HAIT
 
-• Kunst- und Kulturobjekte als Daten erfassen („Datendenken“ ) 
+• Hannah-Arendt-Institut für Totalitarismusforschung e.V. an der TU Dresden
 
-• Normdaten (welche Normdaten? Wie können sie eingesetzt werden?
+• "...vergleichenden Analyse von Diktaturen .... Besonderes Augenmerk liegt dabei auf den Strukturen des Nationalsozialismus und des Kommunismus sowie den Voraussetzungen und Folgen beider Weltanschauungsdiktaturen"
 
-• Standards zur Aufbereitung und dem Austausch von Daten (CIDOC-CRM, LIDO,…) (welche Standards gibt es? Warum sinnvoll? Wie unterscheiden sich diese Standards?)
-
-• Überblick zu französischen Initiativen und Entwicklungen
+• 1993 gegründet und vom Land Sachsen finanziert
 
 ----
 
-### Lernziele
+Beispiele von raumbezogenen histor. Informationen in der  Forschung des
 
-1. Ich verstehe, wie Kunst- und Kulturobjekte mittels beschreibenden Daten und digitalen Surrogaten erfasst werden können.
-
-\# *Digitalisierung* \# *Metadaten*  \# *digitale surrogate* 
+**Regimedatensatz**
 
 ----
 
-2. Ich kenne den Unterschied zwischen Ontologien und kontrolliertem Vokabular. 
-
-Ich kann Daten anreichern, die geographische Orte, Personen, Materialien, Stile und Epochen sowie ikonographische Motive betreffen.
-
-\# *geonames* \# *Getty AAT* \# *GND* \# *VIAF* \# *Iconclass* \# *iDAI.chronotology* \# *CIDOC-CRM*
+**Geflüchtete jüdische Akademikerinnen und Künstlerinnen 1918&ndash;1945**
 
 ----
 
-3. Ich kenne zwei Austauschformate für Metadaten und kann wichtige Ansprüche an sie und Anwendungen beschreiben.  
+**Ortsgruppen der NSDAP in Dresden** als SpinOff der [Erschließung der NS-Tageszeitung "Der Freiheitskampf"](https://hait.tu-dresden.de/ext/forschung/der-freiheitskampf.asp)
 
-\# *LIDO XML* \# *Linked Art data model*
+Link: Digitallabor / [Ortsgruppen der NSDAP](https://digilab-hait.de/freiheitskampf/vis/hait/dresden/ortsgruppen.html)
 
 ----
 
-4. Über den Vergleich mit Frankreich kann ich eine kritische Distanz gegenüber den in meiner Domäne vorherrschenden Lösungen entwickeln.
-
-\# *Joconde* \# *pop* \# *Thesaurus iconographique* \#*Rameau* 
+### Was ist allen drei Beispielen gemeinsam?
 
 ---
 
-## Wo und wie ?
-
-* Olat für die Literaturablage
-* Zoom als Seminarraum
-* Chat und Pads zum gemeinsamen Schreiben
-
-<hr>
-
-* Mischung aus Input, Hands-On und Austausch
+Datenmodelle _
+                         |_ Vektordaten *(Punkte, Linien, Polygone)*
+                         |_ Rasterdaten *(Matrix gleichförmiger Zellen (z.B. Pixel))*
 
 ---
+
+#### Vektordaten
+
+![[Libre Texts Geosciences. 4.2: Vector Data Models](https://geo.libretexts.org/Bookshelves/Geography_(Physical)/Essentials_of_Geographic_Information_Systems_(Campbell_and_Shin)/04%3A_Data_Models_for_GIS)](https://geo.libretexts.org/@api/deki/files/7402/5e0adb92da29fb258470bfeb5265cc55.jpg?revision=1&size=bestfit&width=385&height=356)
+
+
+---
+
+#### Typische Verwendung von Vektordaten
+
+- thematische Karten
+- disparat verteilte punktuelle Werte (Reisestationen, Wahllokale)
+- topologische Karten (Streckenpläne, Straßennetze)
+
+----
+
+- Punkte weisen mind. ein Tupel auf (Hoch- und Rechtswert) und können dann theoretisch unbegrenzt weitere Attribute aufweisen (Höhe, Datierung, Label, Bevölkerungszahl ....)
+- Linien weisen mind. Anfangs- und Endpunkt auf, können zudem gerichtet sein und wiederum Attribute zugewiesen bekommen
+- Polygone weisen mindestens drei Punkte auf und können wiederum mit weiteren Attributen belegt werden 
+
+----
+
+#### Rasterdaten
+
+![[Libre Texts Geosciences. 4.1: Raster Data Models, Fig. 4.1](https://geo.libretexts.org/Bookshelves/Geography_(Physical)/Essentials_of_Geographic_Information_Systems_(Campbell_and_Shin)/04%3A_Data_Models_for_GIS/4.01%3A_Raster_Data_Models) ](https://geo.libretexts.org/@api/deki/files/7407/4f157f6b392921b128e220ee56d2eb72.jpg?revision=1&size=bestfit&width=425&height=278)
+
+----
+
+####  Typische Verwendung von Rasterdaten
+
+- Basemaps (Hintergrundkarten)
+- Relief etc. (kontinuierliche Verteilung)
+- Geodaten aus der Fernerkundung (Luftbilder, Satellitenbilder ...)
+
+----
+
+#### Von Raster zu Vektor
+
+- Konturlinien (z.B. Höhenlinien; Areale)
+- Ableitung von Mindest- und Höchstwerten
+- ...
+
+![[Libre Texts Geosciences. 4.1: Raster Data Models, Fig. 4.3](https://geo.libretexts.org/Bookshelves/Geography_(Physical)/Essentials_of_Geographic_Information_Systems_(Campbell_and_Shin)/04%3A_Data_Models_for_GIS/4.01%3A_Raster_Data_Models)](https://geo.libretexts.org/@api/deki/files/7403/00422de47b6d09c35c398db0ed103ea7.jpg?revision=1&size=bestfit&width=457&height=246)
+
+----
+
+#### Von Vektor zu Raster
+
+- räumliche Interpolationen (Heatmaps)
+
+![[The use of a raster data structure to summarize a point pattern](https://en.wikipedia.org/wiki/Raster_graphics#Image_storage)](https://upload.wikimedia.org/wikipedia/commons/b/b7/The_use_of_a_raster_data_structure_to_summarize_a_point_pattern.gif)
+
+----
+
+### Datenmodelle
+
+
+----
+
+#### Datenformate für Vektordaten
+
+- Textfiles: txt, csv, tsv ...
+- JSON: GeoJson
+- XML: GML, KML (Google) 
+- ESRI: Shapefile (shp)
+
+- geodatabases (ESRI), PostGIS etc.
+
+----
+
+#### Datenformate für Rasterdaten
+
+- TIFF: GeoTIFF
+- JPG: GeoJPG
+- Textfiles: txt
+- zahlreiche proprietäre Formate (Fernerkundung)
+
+---
+
+## 2 Historische Karten zu Geodaten
+
+----
+
+#### Lagebezug ohne geographische Koordinaten
+
+
+![[Tabula Peutingeria, Wikicommons](https://commons.wikimedia.org/wiki/File:Part_of_Tabula_Peutingeriana.jpg)](https://upload.wikimedia.org/wikipedia/commons/e/e9/Part_of_Tabula_Peutingeriana.jpg)
+
+----
+
+**Was kann man damit machen ?**
+
+* als Netzwerk, dessen Kanten zwischen den Knoten unterschiedlich gewichtet sind
+* Hinweis darauf, dass die historische Raumerfahrung und Raumerschließung vollständig anders gewesen ist.
+* Recogito?$$
+
+----
+
+**Übertragung in heutige Koordinaten**
+
+* Digitalisierung -> Recogito
+
+----
+
+### Historische geographische Karten
+
+* Coordinate-Reference-Systems // Koordinatenbezugssystem
+	- Projektion
+	- Geoid
+	- Bezugspunkt
+
+----
+
+**Projektion**
+* In 2D wird eine Kugel dargestellt, die mit einem Netz von Längen- und Breitengraden überzogen ist 
+   - Universale transversale Mercator Projektion (UTM)
+   - Gauß-Krüger Schnittzylinder
+   - Petersen Projektion
+   - polare Projektion
+   - ....
+
+----
+
+* Prä-Satellitenzeitlich!: Verschiedene Modelle der Erde, von denen die kleineren besser im Äquatorbereich, die größeren besser an den Polen passen (Bessel, Krassowski, ....)
+- Passung mit Fundamentalpunkt von der Landesvermessung bestimmt
+- in der DDR und BRD wurde Projektion und Streifen nach Gauß-Krüger verwendet, aber in der DDR Krassowski in der BRD Bessel -> Abweichungen von über 100 m
+
+----
+
+* EPSG-Code: CRS -> EPSG 45## "Google-Koordinaten"
+
+Ausschnitt aus KML und GeoJSON
+
+----
+
+## Historische Geodaten
+
+* **Historische Karten**  
+* **Gazetteer**
+
 
 # Digitalisierung & digitales Surrogat
 
