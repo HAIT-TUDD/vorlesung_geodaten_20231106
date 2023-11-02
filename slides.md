@@ -17,8 +17,8 @@
 |---|---|
 | 1 | HAIT und Beispiele raumbezogener Forschung |
 | 2 | Datenmodelle und -formate |
-| 3 | historische Orte vs. historische Karten |
-| 4 | Gazetteer und Standards |
+| 3 | Historische geographische Karten |
+| 4 | Gazetteer und Semantic Web |
 | 5 | Take aways |
 
 ----
@@ -53,9 +53,11 @@ Link: Digitallabor / [Ortsgruppen der NSDAP](https://digilab-hait.de/freiheitska
 
 ---
 
-Datenmodelle _
-                         |_ Vektordaten *(Punkte, Linien, Polygone)*
-                         |_ Rasterdaten *(Matrix gleichförmiger Zellen (z.B. Pixel))*
+Datenmodelle 
+
+|  Koordinaten | Matrix  |
+|---|---|
+| Vektordaten *(Punkte, Linien, Polygone)* | Rasterdaten *(Matrix gleichförmiger Zellen (z.B. Pixel))* |
 
 ---
 
@@ -108,7 +110,9 @@ Datenmodelle _
 
 - räumliche Interpolationen (Heatmaps)
 
-![[The use of a raster data structure to summarize a point pattern](https://en.wikipedia.org/wiki/Raster_graphics#Image_storage)](https://upload.wikimedia.org/wikipedia/commons/b/b7/The_use_of_a_raster_data_structure_to_summarize_a_point_pattern.gif)
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/The_use_of_a_raster_data_structure_to_summarize_a_point_pattern.gif" height="400">
+
+[The use of a raster data structure to summarize a point pattern](https://en.wikipedia.org/wiki/Raster_graphics#Image_storage)
 
 ----
 
@@ -124,7 +128,7 @@ Datenmodelle _
 - XML: GML, KML (Google) 
 - ESRI: Shapefile (shp)
 
-- geodatabases (ESRI), PostGIS etc.
+- Geodatabases (ESRI), PostGIS etc.
 
 ----
 
@@ -135,63 +139,210 @@ Datenmodelle _
 - Textfiles: txt
 - zahlreiche proprietäre Formate (Fernerkundung)
 
+----
+
+#### *Pakete* mit beiden Formaten
+
+* GeoPackage **gpkg** - offener, nicht proprietärer Standard
+  - beruht auf einer SQLite Datenbank, die z.B. gemeinsame Metadaten und Verknüpfungen vorhält
+  - vom Open Geospatial Consortium definiert
+
 ---
 
-## 2 Historische Karten zu Geodaten
-
-----
-
-#### Lagebezug ohne geographische Koordinaten
+## 2 Historische geographische Karten
 
 
-![[Tabula Peutingeria, Wikicommons](https://commons.wikimedia.org/wiki/File:Part_of_Tabula_Peutingeriana.jpg)](https://upload.wikimedia.org/wikipedia/commons/e/e9/Part_of_Tabula_Peutingeriana.jpg)
-
-----
-
-**Was kann man damit machen ?**
-
-* als Netzwerk, dessen Kanten zwischen den Knoten unterschiedlich gewichtet sind
-* Hinweis darauf, dass die historische Raumerfahrung und Raumerschließung vollständig anders gewesen ist.
-* Recogito?$$
-
-----
-
-**Übertragung in heutige Koordinaten**
-
-* Digitalisierung -> Recogito
 
 ----
 
 ### Historische geographische Karten
 
-* Coordinate-Reference-Systems // Koordinatenbezugssystem
-	- Projektion
-	- Geoid
+**Coordinate-Reference-Systems // Koordinatenbezugssystem**
+
+|_Projektion
+
+|_Ellipsoid und Geoid
 	- Bezugspunkt
 
 ----
 
-**Projektion**
-* In 2D wird eine Kugel dargestellt, die mit einem Netz von Längen- und Breitengraden überzogen ist 
-   - Universale transversale Mercator Projektion (UTM)
-   - Gauß-Krüger Schnittzylinder
-   - Petersen Projektion
-   - polare Projektion
-   - ....
+#### Projektion
+
+Kurz: In 2D soll ein kugelförmiges Objekt dargestellt werden. Dazu wird es mit einem Netz von Längen- und Breitengraden überzogen, und anschließend ein Teilbereich oder das gesamt Netz in eine plane / 2D Ansicht überführt.
+Gebräuchliche Lösungen:
+
+----
+*winkelgetreu*
+
+   - Universale transversale Mercator Projektion (UTM) -> Dezimale Koordinaten
+   
+----
+
+*winkelgetreu*
+
+   - Gauß-Krüger Schnittzylinder (u.a. Deutsche Landesvermessung bis 2000er Jahre)
 
 ----
 
-* Prä-Satellitenzeitlich!: Verschiedene Modelle der Erde, von denen die kleineren besser im Äquatorbereich, die größeren besser an den Polen passen (Bessel, Krassowski, ....)
-- Passung mit Fundamentalpunkt von der Landesvermessung bestimmt
-- in der DDR und BRD wurde Projektion und Streifen nach Gauß-Krüger verwendet, aber in der DDR Krassowski in der BRD Bessel -> Abweichungen von über 100 m
+*flächengetreu*
+
+   - Petersen Projektion (u.a. von UN-genutzt)
+   
+----
+
+#### Weiterlesen
+
+* Beate Weninger, Die Peters-Projektion &ndash; die einzige ""Alternative"?. Blog: Die bemerkenswerte Karte. Deutsche Gesellschaft für Kartographie e.V. 4. Februar 2015. [https://web.archive.org/web/20160403060948/http://bk.dgfk.net/2015/02/04/die-peters-projektion/](https://web.archive.org/web/20160403060948/http://bk.dgfk.net/2015/02/04/die-peters-projektion/)
 
 ----
 
-* EPSG-Code: CRS -> EPSG 45## "Google-Koordinaten"
+#### Ellipsoid / Geoid
+
+|vertikaler Schnitt | horizontaler Schnitt |
+|---|----|
+|<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Geoundnsrp.png" alt="Geoundnsrp.png" height="381" >| <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Geoundaequrp.png" alt="Geoundaequrp.png" height="381">|
+| [https://de.wikipedia.org/wiki/Geoid#/media/Datei:Geoundnsrp.png](https://de.wikipedia.org/wiki/Geoid#/media/Datei:Geoundnsrp.png)  | [https://de.wikipedia.org/wiki/Geoid#/media/Datei:Geoundaequrp.png](https://de.wikipedia.org/wiki/Geoid#/media/Datei:Geoundaequrp.png)|
+| schwarz: (Rotations)Ellipsoid <br>Geometrisches Erdmodell | rot: Geoid <br> Physikalisches Erdmodell|
+
+
+----
+
+**Ellipsoid / Geoid**
+
+* Prä-Satellitenzeitlich!: Verschiedene Modelle (Ellipsoide) der Erde (Geoid)
+* 1841 Bessel Ellipsoid (Anwendung u.a. Deutschland, westl. Europa)
+* 1930 Krassowski (Anwendung ehemalige Sowjetunion, DDR)
+* ab 1990er Jahre in DE Umstellung auf GRS-80 Ellipsoid (= WGS84 / World Geodetic System 1984) und UTM
+
+----
+
+#### Standard
+
+**EPSG**-Codes für Bezugssysteme (Koordinatensysteme, Geoide, Transformationen)
+* wird vom [Open Geospatial Consortium](LINK) betreut
+* Eigene Beschäftigung:
+
+| EPSG Code | Ellipsoid | Region |
+|---|---|---|
+| GK4 Bessel |  Sachsen |
+| GK 4 | Krassowski |
+
+---
+
+#### Anwendung EPSG
 
 Ausschnitt aus KML und GeoJSON
 
 ----
+
+**Georeferenzieren**
+
+* Umrechnung von einzelnen Punkten
+* mit Software zum Georeferenzieren (z.B. QGIS)
+* Einhängen in Leaflet.js (IIIF)
+* Georeferenzieren online
+
+----
+
+
+
+
+----
+
+### Mitnehmen
+
+* Es gibt Vektordaten (Darstellung diskreter Werte) und Rasterdaten (Darstellung kontinuierlicher Werte)
+* Geographische Koordinaten sind nur im Kontext ihres Bezugssystems interpretierbar
+* vor 1990er Jahre zahlreiche verschiedene Bezugssysteme im Gebrauch - Verwendung historisch geographischer Daten nicht völlig trivial
+
+---- 
+
+### Selbsttest 
+
+Welche Koordinaten bekommen Sie in der Wikipedia angezeigt ?
+
+* WGS 84 / Pseudo-Mercator ?
+* WGS 84 / Geographische Koordinaten?
+
+---
+
+## Historischer Lagebezug ohne geographische Koordinaten
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Part_of_Tabula_Peutingeriana.jpg" alt= "Tabula Peutingeria" height="500">
+
+[Tabula Peutingeria, Wikicommons](https://commons.wikimedia.org/wiki/File:Part_of_Tabula_Peutingeriana.jpg)
+
+----
+
+* Bevölkerungsgröße ehemaliger Sowjetrepubliken
+* Fluchtrouten 
+* Adressdaten von NSDAP-Organisationen
+
+----
+
+#### Geogazetteer
+
+* Verzeichnisse von Adressen, Orten, Regierungseinheiten 
+* mit Koordinaten (Mittelpunktskoordinate oder Polygone)
+* mit Hierarchie und Ontologie (Kontinent - Staat - Bundesland  - Landeshauptstadt)
+
+----
+
+#### Historische Gazetteer
+
+* Getty Thesaurus of Geonames
+* Geonames
+* HOV
+* Herder Institut
+
+----
+
+#### Maschinenlesbare Gazetteer
+
+Publikation von Gazetteer mit persistenten Adressen
+
+* Disambiguierung (Audorf in Sachsen (HOV-Link))
+* Historische Zustände (Karl-Marx Stadt)
+* Mehrsprachige Bezeichnungen (Jerusalem; Ankara)
+
+----
+
+#### Gazetteer in Semantic Web Technologien
+
+
+* Verknüpfung mit weiteren Ressourcen über den Ortsbezug -> Deutsches Archäologisches Institut Dresden . Hygiene Museum Literatur Fundort Datenformat!
+* same_as, um mehr als ein Gazetteer zu nutzen
+
+----
+
+#### World Historical Gazetteer
+
+* Formatentwicklung um Daten auszutauschen (JSON)
+
+----
+
+#### Georeferenzieren ohne Geographischen Lagebezug?
+
+* Recogito 
+* Exportformate; Vorgehensweise
+
+Drei Aufgaben:
+
+
+----
+
+#### zum Mitnehmen
+
+* Ortsverzeichnisse, die persistente IDs anbieten, sparen Zeit und verbessern die Datenqualität
+* Texte, Tabellen und nicht geographische Karten können einen Geografischen Raumbezug erhalten
+* Gazetteer werden von verschiedenen Institutionen angeboten; die Nutzung der fachlich spezifischen ist eine Aufgabe der adäquaten Passung
+
+
+---
+
+### Geovisualisierung
+
+
 
 ## Historische Geodaten
 
@@ -890,4 +1041,6 @@ Kontakt: aklammt@dfk-paris.org, @archaeoklammt
 
 ArtNews 2017: ArtNews, The Louvre was the ‘Most Instagrammed Museum’ in 2017. published 29.11.2017 https://www.artnews.com/art-news/news/louvre-instagrammed-museum-2017-9392/
 
+
+M7hvBpAZ4Bm1gjZ3bhuH
 
