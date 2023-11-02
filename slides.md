@@ -173,22 +173,11 @@ Kurz: In 2D soll ein kugelförmiges Objekt dargestellt werden. Dazu wird es mit 
 Gebräuchliche Lösungen:
 
 ----
-*winkelgetreu*
 
-   - Universale transversale Mercator Projektion (UTM) -> Dezimale Koordinaten
-   
-----
+<table><tr><td>an den Längen getreu</td><td> Universale transversale Mercator Projektion (UTM)<br>https://upload.wikimedia.org/wikipedia/commons/f/f0/MercNormSph.png</td><td><img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/MercNormSph.png" height="150"></td></tr>
+<tr><td>flächengetreu</td><td> Petersen Projektion (u.a. von UN-genutzt)</td><td><img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Gall%E2%80%93Peters_projection_SW.jpg" height="150"></td></tr></table>
 
-*winkelgetreu*
 
-   - Gauß-Krüger Schnittzylinder (u.a. Deutsche Landesvermessung bis 2000er Jahre)
-
-----
-
-*flächengetreu*
-
-   - Petersen Projektion (u.a. von UN-genutzt)
-   
 ----
 
 #### Weiterlesen

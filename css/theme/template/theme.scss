@@ -208,6 +208,8 @@
 	margin: auto;
 	border-collapse: collapse;
 	border-spacing: 0;
+    border-width: thin 0 0 thin;
+    margin: 0 0 1em;
 }
 
 .reveal table th {
@@ -221,9 +223,9 @@
 	border-bottom: 1px solid;
 }
 
-.reveal table th[align="center"],
-.reveal table td[align="center"] {
-	text-align: center;
+.reveal table th[align="right"],
+.reveal table td[align="right"] {
+	text-align: right;
 }
 
 .reveal table th[align="right"],
@@ -233,7 +235,7 @@
 
 .reveal table tbody tr:last-child th,
 .reveal table tbody tr:last-child td {
-	border-bottom: none;
+	border-bottom: 1px solid;
 }
 
 .reveal sup {
