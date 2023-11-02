@@ -1,4 +1,4 @@
-<img data-src="myImage.png" height="420" width="200" /># Datenkuration
+# Titel
 
 |  |  |
 |:---|---|
